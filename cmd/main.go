@@ -8,8 +8,9 @@ import (
 )
 
 func main() {
-	log.Println("Starting ...")
+
 	router := mux.NewRouter()
 	router.HandleFunc("/persons", application.Get)
 	log.Fatal(http.ListenAndServe(":8000", router))
+
 }
