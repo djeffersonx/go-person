@@ -1,0 +1,32 @@
+services:
+  person-service:
+    build: ./..
+    ports:
+      - "8000:8000"
+    networks:
+      - backend
+
+  person-postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "123456"
+    ports:
+      - "5432:5432"
+    networks:
+      - backend
+
+  localstack:
+    image: localstack/localstack
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=ssm
+      - DEFAULT_REGION=us-east-1
+      - AWS_ACCESS_KEY_ID=access-key
+      - AWS_SECRET_ACCESS_KEY=access-key-secret
+      - AWS_DEFAULT_REGION=us-east-1
+    volumes:
+      - ./init-aws-ssm.sh:/docker-entrypoint-initaws.d/init-aws-ssm.sh
+
+networks:
+  backend:
