@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: go-person-conf
+data:
+  env: |
+    APP_ENVIRONMENT=dev

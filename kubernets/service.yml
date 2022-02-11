@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: person-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: go-person
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8000

@@ -1,4 +1,5 @@
 services:
+
   person-service:
     build: ./..
     ports:
@@ -25,8 +26,17 @@ services:
       - AWS_ACCESS_KEY_ID=access-key
       - AWS_SECRET_ACCESS_KEY=access-key-secret
       - AWS_DEFAULT_REGION=us-east-1
+      - CREATE_PARAMETERS=
+          /go-person/development/database.url:url-postgresql
+          /go-person/development/database.username:user-postgresql
     volumes:
       - ./init-aws-ssm.sh:/docker-entrypoint-initaws.d/init-aws-ssm.sh
+
+  docker-registry:
+    container_name: local-docker-registry
+    image: registry:2
+    ports:
+      - "5005:5000"
 
 networks:
   backend:
