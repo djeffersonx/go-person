@@ -1,7 +1,17 @@
+build-container-image:
+	docker build -t localhost:5001/go-person:1.0 .
+	#docker image ls | grep localhost:5001/go-person:1.0
+	docker tag 9c99de864904 localhost:5001/go-person:1.0
+	docker image push localhost:5001/go-person:1.0
 
-docker build -t localhost.io:5005/go-person . \
+kube-deploy:
+	kubectl apply -f kubernets/deployment.yml
+	kubectl apply -f kubernets/service.yml
+	kubectl apply -f kubernets/configmap.yml
 
-docker image ls | grep localhost.io:5005/go-person \
+kube-destroy:
+	kubectl delete deploy person-service-deployment
+	kubectl delete service person-service
+	kubectl delete configmap person-service-config
 
-docker tag 9c99de864904 localhost.io/go-person \
-docker push localhost.io:5005/go-person
+re-run: kube-destroy build-container-image kube-deploy

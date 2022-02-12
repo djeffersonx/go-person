@@ -5,8 +5,8 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: go-person
+    app: person-service
   ports:
-    - name: http
-      port: 8000
+    - protocol: TCP
+      port: 80
       targetPort: 8000

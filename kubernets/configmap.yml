@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: go-person-conf
+  name: person-service
 data:
   env: |
     APP_ENVIRONMENT=dev

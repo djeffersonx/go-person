@@ -32,11 +32,5 @@ services:
     volumes:
       - ./init-aws-ssm.sh:/docker-entrypoint-initaws.d/init-aws-ssm.sh
 
-  docker-registry:
-    container_name: local-docker-registry
-    image: registry:2
-    ports:
-      - "5005:5000"
-
 networks:
   backend:

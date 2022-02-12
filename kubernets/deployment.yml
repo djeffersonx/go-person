@@ -1,21 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: go-person
+  name: person-service
   labels:
-    app: go-person
+    app: person-service
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: go-person
+      app: person-service
   template:
     metadata:
       labels:
-        app: go-person
+        app: person-service
     spec:
       containers:
-        - name: go-person
-          image: localhost.io:5005/go-person
+        - name: person-service
+          image: localhost:5001/go-person:1.0
           ports:
             - containerPort: 8000
+
