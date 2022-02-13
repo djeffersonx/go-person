@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: person-service
-          image: localhost:5001/go-person:1.0
+          image: idws/go-person:1.0
           ports:
             - containerPort: 8000
-
+              protocol: TCP
