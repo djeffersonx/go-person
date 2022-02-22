@@ -14,3 +14,7 @@ func Get(w http.ResponseWriter, r *http.Request) {
 		writeErrorResponse(http.StatusInternalServerError, err, w)
 	}
 }
+
+func Post(w http.ResponseWriter, r *http.Request) {
+	personService.Create()
+}
