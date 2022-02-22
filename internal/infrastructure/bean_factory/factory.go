@@ -6,6 +6,8 @@ import (
 	"sync"
 )
 
+// todo remove bean management, have more of functional mindset !!!
+
 var (
 	once sync.Once
 )
